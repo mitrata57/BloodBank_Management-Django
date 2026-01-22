@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Blood Bank{% endblock %}
+
+{% block content %}
+<div class="hero bg-danger text-white text-center py-5">
+    <div class="container">
+        <h1 class="display-4">
+            <i class="fas fa-heartbeat"></i> Save Lives, Donate Blood
+        </h1>
+        <p class="lead">Every donation can save up to 3 lives</p>
+        <a href="{% url 'donor:dashboard' %}" class="btn btn-light btn-lg me-2">
+            Become a Donor
+        </a>
+        <a href="{% url 'receiver:dashboard' %}" class="btn btn-outline-light btn-lg">
+            Request Blood
+        </a>
+    </div>
+</div>
+
+<div class="container my-5">
+    <h2 class="text-center mb-4">How It Works</h2>
+    <div class="row">
+        <div class="col-md-3 text-center">
+            <i class="fas fa-user-plus fa-3x text-danger mb-3"></i>
+            <h5>Register</h5>
+            <p>Create your account</p>
+        </div>
+        <div class="col-md-3 text-center">
+            <i class="fas fa-tint fa-3x text-danger mb-3"></i>
+            <h5>Donate</h5>
+            <p>Schedule donation</p>
+        </div>
+        <div class="col-md-3 text-center">
+            <i class="fas fa-search fa-3x text-danger mb-3"></i>
+            <h5>Request</h5>
+            <p>Find blood type</p>
+        </div>
+        <div class="col-md-3 text-center">
+            <i class="fas fa-hospital fa-3x text-danger mb-3"></i>
+            <h5>Connect</h5>
+            <p>Nearby hospitals</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

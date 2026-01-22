@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Donor Dashboard{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1><i class="fas fa-hand-holding-medical text-danger"></i> Donor Dashboard</h1>
+    <p class="lead">Thank you for choosing to save lives!</p>
+    <hr>
+
+    
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="text-danger">{{ total_donations }}</h3>
+                    <p class="text-muted">Total Donations</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="text-danger">{{ next_eligible }}</h3>
+                    <p class="text-muted">Next Eligible</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="text-danger">{{ lives_saved }}</h3>
+                    <p class="text-muted">Lives Saved</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert alert-info mt-4">
+        <i class="fas fa-info-circle"></i> 
+        You can donate blood every 3 months.
+    </div>
+</div>
+{% endblock %}

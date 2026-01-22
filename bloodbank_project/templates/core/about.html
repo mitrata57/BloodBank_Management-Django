@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}About - Blood Bank{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="text-center mb-4">
+        <i class="fas fa-info-circle text-danger"></i> About Blood Bank
+    </h1>
+    
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h3>Our Mission</h3>
+                    <p class="lead">We connect blood donors with recipients to save lives.</p>
+                    
+                    <hr>
+                    
+                    <h4>How It Works:</h4>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <strong><i class="fas fa-hand-holding-medical text-danger"></i> Donors:</strong> 
+                            Register, donate blood, save lives
+                        </li>
+                        <li class="list-group-item">
+                            <strong><i class="fas fa-procedures text-danger"></i> Receivers:</strong> 
+                            Request blood when needed
+                        </li>
+                        <li class="list-group-item">
+                            <strong><i class="fas fa-hospital text-danger"></i> Hospitals:</strong> 
+                            Manage inventory and requests
+                        </li>
+                    </ul>
+                    
+                    <div class="alert alert-success mt-4">
+                        <strong><i class="fas fa-star"></i> Key Feature:</strong> 
+                        You can be both a donor AND receiver!
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <a href="{% url 'core:home' %}" class="btn btn-danger">
+                            <i class="fas fa-home"></i> Back to Home
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
