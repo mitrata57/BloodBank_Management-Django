@@ -1,0 +1,319 @@
+{% extends 'base.html' %}
+
+{% block title %}Hospital Dashboard - Blood Bank{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <!-- Page Header -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1>
+                <i class="fas fa-hospital text-danger"></i> 
+                Hospital Dashboard
+            </h1>
+            <p class="lead">Manage blood inventory and requests</p>
+            <hr>
+        </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="row g-4 mb-4">
+        <div class="col-md-3">
+            <div class="card border-danger">
+                <div class="card-body text-center">
+                    <i class="fas fa-tint fa-2x text-danger mb-2"></i>
+                    <h3 class="text-danger">45</h3>
+                    <p class="text-muted mb-0">Total Units</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-warning">
+                <div class="card-body text-center">
+                    <i class="fas fa-exclamation-triangle fa-2x text-warning mb-2"></i>
+                    <h3 class="text-warning">3</h3>
+                    <p class="text-muted mb-0">Low Stock Alerts</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-info">
+                <div class="card-body text-center">
+                    <i class="fas fa-clipboard-list fa-2x text-info mb-2"></i>
+                    <h3 class="text-info">8</h3>
+                    <p class="text-muted mb-0">Pending Requests</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-success">
+                <div class="card-body text-center">
+                    <i class="fas fa-check-circle fa-2x text-success mb-2"></i>
+                    <h3 class="text-success">127</h3>
+                    <p class="text-muted mb-0">Fulfilled This Month</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Row -->
+    <div class="row">
+        <!-- Left Column - Blood Inventory -->
+        <div class="col-lg-8">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-warehouse"></i> Current Blood Inventory
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Blood Type</th>
+                                    <th>Units Available</th>
+                                    <th>Status</th>
+                                    <th>Last Updated</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="badge bg-danger fs-6">A+</span></td>
+                                    <td>12 units</td>
+                                    <td><span class="badge bg-success">Good</span></td>
+                                    <td>2 hours ago</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-plus"></i> Add
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge bg-danger fs-6">A-</span></td>
+                                    <td>4 units</td>
+                                    <td><span class="badge bg-warning">Low</span></td>
+                                    <td>5 hours ago</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-plus"></i> Add
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge bg-danger fs-6">B+</span></td>
+                                    <td>8 units</td>
+                                    <td><span class="badge bg-success">Good</span></td>
+                                    <td>1 hour ago</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-plus"></i> Add
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge bg-danger fs-6">B-</span></td>
+                                    <td>2 units</td>
+                                    <td><span class="badge bg-danger">Critical</span></td>
+                                    <td>3 hours ago</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-plus"></i> Add
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge bg-danger fs-6">O+</span></td>
+                                    <td>15 units</td>
+                                    <td><span class="badge bg-success">Good</span></td>
+                                    <td>30 mins ago</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-plus"></i> Add
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge bg-danger fs-6">O-</span></td>
+                                    <td>3 units</td>
+                                    <td><span class="badge bg-warning">Low</span></td>
+                                    <td>4 hours ago</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-plus"></i> Add
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge bg-danger fs-6">AB+</span></td>
+                                    <td>5 units</td>
+                                    <td><span class="badge bg-success">Good</span></td>
+                                    <td>1 hour ago</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-plus"></i> Add
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge bg-danger fs-6">AB-</span></td>
+                                    <td>1 unit</td>
+                                    <td><span class="badge bg-danger">Critical</span></td>
+                                    <td>6 hours ago</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-plus"></i> Add
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pending Requests -->
+            <div class="card shadow-sm">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-clock"></i> Pending Blood Requests
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group">
+                        <div class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="mb-1">Patient: Ram Kumar</h6>
+                                    <p class="mb-1 text-muted small">
+                                        <span class="badge bg-danger">B-</span> 
+                                        3 units needed | 
+                                        <span class="badge bg-warning">Urgent</span>
+                                    </p>
+                                    <p class="mb-0 small">Bir Hospital | Contact: 9841234567</p>
+                                </div>
+                                <div>
+                                    <button class="btn btn-sm btn-success me-1">
+                                        <i class="fas fa-check"></i> Fulfill
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-secondary">
+                                        <i class="fas fa-eye"></i> View
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="mb-1">Patient: Sita Sharma</h6>
+                                    <p class="mb-1 text-muted small">
+                                        <span class="badge bg-danger">O+</span> 
+                                        2 units needed | 
+                                        <span class="badge bg-success">Normal</span>
+                                    </p>
+                                    <p class="mb-0 small">Patan Hospital | Contact: 9851234567</p>
+                                </div>
+                                <div>
+                                    <button class="btn btn-sm btn-success me-1">
+                                        <i class="fas fa-check"></i> Fulfill
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-secondary">
+                                        <i class="fas fa-eye"></i> View
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column - Quick Actions -->
+        <div class="col-lg-4">
+            <!-- Add Blood Stock -->
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-success text-white">
+                    <h6 class="mb-0">
+                        <i class="fas fa-plus-circle"></i> Add Blood Stock
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Blood Type</label>
+                            <select class="form-select" required>
+                                <option value="">Select...</option>
+                                <option>A+</option>
+                                <option>A-</option>
+                                <option>B+</option>
+                                <option>B-</option>
+                                <option>O+</option>
+                                <option>O-</option>
+                                <option>AB+</option>
+                                <option>AB-</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Units to Add</label>
+                            <input type="number" class="form-control" min="1" max="50" value="1" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Donor Name (Optional)</label>
+                            <input type="text" class="form-control" placeholder="John Doe">
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">
+                            <i class="fas fa-save"></i> Add Stock
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Alerts -->
+            <div class="card shadow-sm border-warning">
+                <div class="card-header bg-warning">
+                    <h6 class="mb-0">
+                        <i class="fas fa-bell"></i> Low Stock Alerts
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2">
+                            <span class="badge bg-danger">B-</span> 
+                            <small>Only 2 units left</small>
+                        </li>
+                        <li class="mb-2">
+                            <span class="badge bg-danger">AB-</span> 
+                            <small>Only 1 unit left</small>
+                        </li>
+                        <li class="mb-0">
+                            <span class="badge bg-danger">O-</span> 
+                            <small>Only 3 units left</small>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="card shadow-sm mt-4">
+                <div class="card-body">
+                    <h6><i class="fas fa-chart-line"></i> This Week</h6>
+                    <hr>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Donations Received:</span>
+                        <strong>23</strong>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Units Distributed:</span>
+                        <strong>31</strong>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span class="text-muted">Lives Saved:</span>
+                        <strong class="text-danger">93</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
