@@ -45,11 +45,8 @@ class CustomUserManager(BaseUserManager):
         return self.create_user(phone_number, email, password, **extra_fields)
 
 
-
-
-
 class CustomUser(AbstractBaseUser, PermissionsMixin):
-    
+
     BLOOD_TYPE_CHOICES = [
         ('A+', 'A Positive'),
         ('A-', 'A Negative'),
