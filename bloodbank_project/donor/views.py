@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def donor_register(request):
     return HttpResponse("<h1> Donor Registration Page </h1>")
 
+@login_required(login_url='accounts:login')
 def dashboard(request):
     context = {
         'total_donations': 0,     
