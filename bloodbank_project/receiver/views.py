@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.contrib.auth.decorators import login_required
-# Create your views here.
+from accounts.decorators import receiver_required
+
 def receiver_register(request):
     return HttpResponse("<h1> Receiver Registration Page </h1>")
 
-@login_required(login_url='accounts:login')
+@receiver_required
 def dashboard(request):
-    return render(request ,'receiver/dashboard.html')
+    return render(request, 'receiver/dashboard.html')
