@@ -17,8 +17,6 @@ Django web app connecting blood donors with receivers in Nepal.
 -  UI templates with Bootstrap
 -  URL routing
 -  Database setup
-
-**In Progress:**
 -  User registration
 -  Authentication
 
