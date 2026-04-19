@@ -100,3 +100,87 @@ class CustomUserCreationForm(forms.Form):
                 raise forms.ValidationError('Passwords do not match')
 
         return cleaned_data
+    
+
+
+class ProfileEditForm(forms.Form):
+    first_name = forms.CharField(
+        max_length=50,
+        error_messages={'required': 'First name is required'}
+    )
+    last_name = forms.CharField(
+        max_length=50,
+        error_messages={'required': 'Last name is required'}
+    )
+    email = forms.EmailField(
+        error_messages={
+            'required': 'Email is required',
+            'invalid': 'Enter a valid email address'
+        }
+    )
+    blood_type = forms.ChoiceField(
+        choices=CustomUser.BLOOD_TYPE_CHOICES,
+        error_messages={'required': 'Blood type is required'}
+    )
+    age = forms.IntegerField(
+        min_value=18,
+        max_value=65,
+        error_messages={
+            'required': 'Age is required',
+            'min_value': 'You must be at least 18',
+            'max_value': 'Age cannot exceed 65'
+        }
+    )
+    address = forms.CharField(
+        max_length=255,
+        error_messages={'required': 'Address is required'}
+    )
+
+    def __init__(self, user, *args, **kwargs):
+        self.user = user
+        super().__init__(*args, **kwargs)
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if CustomUser.objects.filter(email=email).exclude(id=self.user.id).exists():
+            raise forms.ValidationError('This email is already in use by another account')
+        return email
+    
+class ChangePasswordForm(forms.Form):
+    old_password = forms.CharField(
+        widget=forms.PasswordInput,
+        error_messages={'required': 'Please enter your current password'}
+    )
+    new_password = forms.CharField(
+        widget=forms.PasswordInput,
+        min_length=8,
+        error_messages={
+            'required': 'Please enter a new password',
+            'min_length': 'Password must be at least 8 characters'
+        }
+    )
+    confirm_password = forms.CharField(
+        widget=forms.PasswordInput,
+        error_messages={'required': 'Please confirm your new password'}
+    )
+
+    def __init__(self, user, *args, **kwargs):
+        self.user = user
+        super().__init__(*args, **kwargs)
+
+    def clean_old_password(self):
+        old_password = self.cleaned_data.get('old_password')
+        if not self.user.check_password(old_password):
+            raise forms.ValidationError('Current password is incorrect')
+        return old_password
+
+    def clean(self):
+        cleaned_data = super().clean()
+        new_password = cleaned_data.get('new_password')
+        confirm_password = cleaned_data.get('confirm_password')
+
+        if new_password and confirm_password:
+            if new_password != confirm_password:
+                raise forms.ValidationError('New passwords do not match')
+
+        return cleaned_data

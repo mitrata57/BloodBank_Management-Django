@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+{% block title %}My Profile - Blood Bank{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <!-- Profile Card -->
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header bg-danger text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-user-circle"></i> My Profile
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <!-- Personal Information -->
+                    <h5 class="mb-3">Personal Information</h5>
+                    <table class="table table-borderless">
+                        <tr>
+                            <td class="fw-bold" style="width: 30%;">Full Name:</td>
+                            <td>{{ user.get_full_name }}</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Email:</td>
+                            <td>{{ user.email }}</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Phone Number:</td>
+                            <td>{{ user.phone_number }}</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Age:</td>
+                            <td>{{ user.age }} years</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Address:</td>
+                            <td>{{ user.address }}</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Blood Type:</td>
+                            <td>
+                                <span class="badge bg-danger fs-6">{{ user.blood_type }}</span>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <hr>
+
+                    <!-- Current Roles -->
+                    <h5 class="mb-3">Current Roles</h5>
+                    <div class="mb-3">
+                        {% if user.is_donor %}
+                            <span class="badge bg-success me-2">
+                                <i class="fas fa-hand-holding-medical"></i> Donor
+                            </span>
+                        {% endif %}
+                        {% if user.is_receiver %}
+                            <span class="badge bg-info me-2">
+                                <i class="fas fa-procedures"></i> Receiver
+                            </span>
+                        {% endif %}
+                        {% if user.is_hospital %}
+                            <span class="badge bg-warning me-2">
+                                <i class="fas fa-hospital"></i> Hospital
+                            </span>
+                        {% endif %}
+                        
+                        {% if not user.is_donor and not user.is_receiver and not user.is_hospital %}
+                            <span class="text-muted">No roles assigned</span>
+                        {% endif %}
+                    </div>
+
+                    <hr>
+
+                    <!-- Action Buttons -->
+                    <div class="d-flex gap-2">
+                        <a href="{% url 'accounts:edit_profile' %}" class="btn btn-primary">
+                            <i class="fas fa-edit"></i> Edit Profile
+                        </a>
+                        <a href="{% url 'accounts:change_password' %}" class="btn btn-warning">
+                            <i class="fas fa-key"></i> Change Password
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Stats Sidebar -->
+        <div class="col-lg-4">
+            <div class="card shadow mb-3">
+                <div class="card-body text-center">
+                    <h6 class="text-muted">Member Since</h6>
+                    <p class="fs-5 fw-bold">{{ user.date_joined|date:"M d, Y" }}</p>
+                </div>
+            </div>
+
+            <div class="card shadow">
+                <div class="card-header bg-light">
+                    <h6 class="mb-0">Add Additional Role</h6>
+                </div>
+                <div class="card-body">
+                   <p class="small text-muted">Want to help in another way?</p>
+        
+                    {% if not user.is_donor %}
+                        <a href="{% url 'accounts:add_role' 'donor' %}" class="btn btn-sm btn-outline-success w-100 mb-2">
+                            <i class="fas fa-plus"></i> Become a Donor
+                        </a>
+                    {% endif %}
+                    
+                    {% if not user.is_receiver %}
+                        <a href="{% url 'accounts:add_role' 'receiver' %}" class="btn btn-sm btn-outline-info w-100 mb-2">
+                            <i class="fas fa-plus"></i> Register as Receiver
+                        </a>
+                    {% endif %}
+
+                    <!-- Hospital registration removed - admin only -->
+                    <hr>
+                    <p class="small text-muted mb-0">
+                        <i class="fas fa-info-circle"></i> 
+                        <strong>Hospital registration</strong> requires admin verification. 
+                        Contact admin to register as a hospital.
+                    </p>
+
+                    {% if user.is_donor and user.is_receiver %}
+                        <hr>
+                        <p class="text-success mb-0">
+                            <i class="fas fa-check-circle"></i> You have both donor and receiver roles!
+                        </p>
+                    {% endif %}
+        
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}  
