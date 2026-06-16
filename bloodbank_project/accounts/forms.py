@@ -48,11 +48,11 @@ class CustomUserCreationForm(forms.Form):
         error_messages={'required': 'Blood type is required'}
     )
     age = forms.IntegerField(
-        min_value=18,
+        min_value=1,
         max_value=65,
         error_messages={
             'required': 'Age is required',
-            'min_value': 'You must be at least 18 to register',
+            'min_value': 'Enter valid age',
             'max_value': 'Age cannot exceed 65'
         }
     )
@@ -123,12 +123,12 @@ class ProfileEditForm(forms.Form):
         error_messages={'required': 'Blood type is required'}
     )
     age = forms.IntegerField(
-        min_value=18,
-        max_value=65,
+        min_value=1,
+        max_value=120,
         error_messages={
             'required': 'Age is required',
-            'min_value': 'You must be at least 18',
-            'max_value': 'Age cannot exceed 65'
+            'min_value': 'Please enter a valid age',
+            'max_value': 'Please enter a valid age'
         }
     )
     address = forms.CharField(

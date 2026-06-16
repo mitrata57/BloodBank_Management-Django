@@ -1,7 +1,10 @@
 from django.urls import path
 from . import views
-app_name = 'receiver' 
+
+app_name = 'receiver'
+
 urlpatterns = [
-    path('register/',views.receiver_register),
-    path('dashboard/',views.dashboard , name='dashboard')
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('request/', views.create_request, name='create_request'),
+    path('history/', views.request_history, name='request_history'),
 ]

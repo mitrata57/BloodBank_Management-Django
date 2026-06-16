@@ -18,6 +18,7 @@ def register(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
 
+      
         if form.is_valid():
             phone_number = form.cleaned_data['phone_number']
             email = form.cleaned_data['email']

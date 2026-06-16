@@ -75,10 +75,10 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     address = models.CharField(max_length=255)
-    age = models.IntegerField()
+    age = models.IntegerField(null=True, blank=True)
     
     # Blood info
-    blood_type = models.CharField(max_length=3, choices=BLOOD_TYPE_CHOICES)
+    blood_type = models.CharField(max_length=3, choices=BLOOD_TYPE_CHOICES, blank=True)
     
     # Role flags
     is_donor = models.BooleanField(default=False, help_text='Can donate blood')
@@ -93,7 +93,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     objects = CustomUserManager()
     
     USERNAME_FIELD = 'phone_number'
-    REQUIRED_FIELDS = ['email', 'first_name', 'last_name', 'blood_type', 'age', 'address']
+    REQUIRED_FIELDS = ['email', 'first_name', 'last_name']
     
     class Meta:
         verbose_name = 'User'

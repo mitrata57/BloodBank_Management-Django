@@ -39,6 +39,14 @@ def dashboard(request):
 
 @donor_required
 def record_donation(request):
+    
+    if request.user.age and request.user.age < 18:
+        messages.error(request, 'You must be at least 18 years old to donate blood.')
+        return redirect('donor:dashboard')
+    
+    if request.user.age and request.user.age > 65:
+        messages.error(request, 'Donors must be under 65 years old.')
+        return redirect('donor:dashboard')
     if request.method == 'GET':
         form = DonationForm()
         return render(request, 'donor/record_donation.html', {'form': form})
